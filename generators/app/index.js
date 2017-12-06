@@ -8,6 +8,11 @@ const path = require('path')
 const moment = require('moment')
 const Generator = require('yeoman-generator')
 
+const {
+  printRick
+} = require('../../utils/console-tools')
+
+
 module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts)
@@ -25,7 +30,10 @@ module.exports = class extends Generator {
     }
   }
 
-  initializing() {}
+  initializing() {
+    printRick()
+    this.log('Work is stupid,the whole point is to get less of it.')
+  }
 
   prompting() {
     return this.prompt([
@@ -144,10 +152,10 @@ module.exports = class extends Generator {
   install() {
     this.spawnCommand('cd', [this.options.appName])
 
-    this.npmInstall()
+    // this.npmInstall()
   }
 
   end() {
-    this.spawnCommand('npm', ['start'])
+    // this.spawnCommand('npm', ['start'])
   }
 }
