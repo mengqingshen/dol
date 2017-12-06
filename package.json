@@ -1,0 +1,32 @@
+{
+  "name": "generator-rick",
+  "version": "0.0.1",
+  "description": "Save your life by working with rick.",
+  "files": [
+    "generators"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mengqingshen/generator-rick.git"
+  },
+  "keywords": [
+    "yeoman-generator",
+    "scaffold",
+    "rick",
+    "react"
+  ],
+  "author": "mengqingshen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mengqingshen/generator-rick/issues"
+  },
+  "homepage": "https://github.com/mengqingshen/generator-rick#readme",
+  "dependencies": {
+    "moment": "^2.19.3",
+    "yeoman-generator": "^2.0.1"
+  }
+}

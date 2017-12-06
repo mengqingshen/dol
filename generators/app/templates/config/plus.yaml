@@ -1,0 +1,17 @@
+version: v1
+common:
+  os: centos7
+  tools:
+    node: v6.11.2
+build:
+  run:
+    workDir: .
+    cmd:
+      - echo 'start build'
+      - bash ./script/pre-deploy.sh
+  target:
+    distDir: ./public/html
+    files:
+      - ./*
+deploy:
+  targetDir:
