@@ -1,18 +1,18 @@
 {
-  "name": "{ appName }",
-  "version": "{ appVersion }",
-  "description": "{ appDesc }",
+  "name": "<$= appName $>",
+  "version": "<$= appVersion $>",
+  "description": "<$= appDesc $>",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=debug supervisor -w package.json bin webpack.* app.json ./server/index.js",
+    "start": "NODE_ENV=debug supervisor -w package.json server build .yo-rc.json ./server/index.js",
     "build": "NODE_ENV=online webpack --config build/webpack.config.prod.js --progress --colors",
     "mock": "vane run --toPort 3000 -p 8345 -m 8346 --testBodyPort 8348",
     "validate": "npm ls",
     "lint": "eslint ./"
   },
   "author": {
-    "name": "{ appAuthorName }",
-    "email": "{ appAuthorEmail }"
+    "name": "<$= appAuthorName $>",
+    "email": "<$= appAuthorEmail $>"
   },
   "license": "ISC",
   "devDependencies": {

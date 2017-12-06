@@ -1,11 +1,6 @@
 /**
- * @author { appAuthorName }, { appAuthorEmail }
- * @file where your common api is defined. { appCreateDate }
- */
-
-/**
- * @file 渠道 CRM > 业务要求
- * @author mengqingshen(mengqingshen_sean@outlook.com), 2017/10/26
+ * @author <$= appAuthorName $>, <$= appAuthorEmail $>
+ * @file where your common api is defined. <$= appCreateDate $>
  */
 
 import { get } from 'axios'

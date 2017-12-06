@@ -1,7 +1,7 @@
 const fs = require('fs')
 const MSS = require('mss-sdk')
 
-const data = JSON.parse(fs.readFileSync('config/app.json', 'utf-8'))
+const data = JSON.parse(fs.readFileSync('.yo-rc.json', 'utf-8'))['generator-rick']
 const bucketName = data.cdn.bucketName
 const publicPath = 'public/'
 const s3 = new MSS.S3({

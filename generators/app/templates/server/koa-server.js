@@ -58,12 +58,11 @@ app.use(c2k(proxyMiddleware(['**/*.html', '**/*.js', '**/*.css'], {
 })))
 
 // 代理至 中间层 dev
-app.use(c2k(proxyMiddleware(['/mfepro/xianfu/channel/uicomponent/api/**'], {
+app.use(c2k(proxyMiddleware(['/mfepro/xianfu/channel/uicomponent/api/**', '/agent/**'], {
   target: 'http://mfe.waimai.dev.sankuai.com',
   changeOrigin: true,
   logLevel: 'debug'
 })))
-
 
 app.on('error', (err) => {
   log.error(err.stack)

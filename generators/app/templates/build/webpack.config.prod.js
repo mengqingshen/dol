@@ -17,7 +17,7 @@ const webpackBaseConfig = require('./webpack.config.base.js')
 const ROOT_PATH = path.resolve(__dirname, '../')
 const BUILD_PATH = path.resolve(ROOT_PATH, 'public')
 
-const data = JSON.parse(fs.readFileSync(path.resolve(ROOT_PATH, 'config/app.json'), 'utf-8'))
+const data = JSON.parse(fs.readFileSync(path.resolve(ROOT_PATH, '.yo-rc.json'), 'utf-8'))['generator-rick']
 
 const config = {
   devtool: 'source-map',

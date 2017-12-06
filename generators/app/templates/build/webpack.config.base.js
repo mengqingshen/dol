@@ -12,7 +12,7 @@ const APP_PATH = path.resolve(ROOT_PATH, 'src')
 const BUILD_PATH = path.resolve(ROOT_PATH, 'public')
 const MODULES_PATH = path.resolve(APP_PATH, 'modules')
 
-const appJSON = JSON.parse(fs.readFileSync(path.resolve(ROOT_PATH, 'config/app.json'), 'utf-8'))
+const appJSON = JSON.parse(fs.readFileSync(path.resolve(ROOT_PATH, '.yo-rc.json'), 'utf-8'))['generator-rick']
 const entries = require('../src/helpers/get-entries')()
 
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
