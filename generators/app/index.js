@@ -42,31 +42,31 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'appName',
-        message: '名称',
+        message: 'name of the app',
         default: this.options.appName
       },
       {
         type: 'input',
         name: 'appDesc',
-        message: '描述',
+        message: 'description of the app',
         defult: ''
       },
       {
         type: 'input',
         name: 'appAuthorName',
-        message: '作者',
+        message: 'your name',
         store: true
       },
       {
         type: 'input',
         name: 'appAuthorEmail',
-        message: '邮箱',
+        message: 'your email',
         store: true
       },
       {
         type: 'input',
         name: 'appVersion',
-        message: '版本',
+        message: 'version of the app',
         default: '1.0.0',
         store: true
       },

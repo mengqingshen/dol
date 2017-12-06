@@ -31,20 +31,20 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'pageTitle',
-        message: '页面标题',
+        message: 'title of the page',
         defult: ''
       },
       {
         type: 'input',
         name: 'pagePath',
-        message: '页面线上路径',
+        message: 'the path of the page',
         defult: ''
       },
       {
         type: 'checkbox',
         name: 'pageDataFlowPlan',
         default: 'mobx',
-        message: '数据流管理方案',
+        message: 'plan of data flow',
         choices: [
           {
             name: 'mobx',
@@ -64,13 +64,13 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'pageAuthorName',
-        message: '作者名字',
+        message: 'your name',
         store: true
       },
       {
         type: 'input',
         name: 'pageAuthorEmail',
-        message: '作者邮箱',
+        message: 'your email',
         store: true
       },
     ]).then((answers) => {
@@ -125,7 +125,6 @@ module.exports = class extends Generator {
 
     config.path[this.answers.pageName] = this.answers.pagePath
 
-    console.log('config', config)
     this.config.set(config)
   }
 }
