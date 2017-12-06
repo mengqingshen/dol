@@ -9,8 +9,10 @@ const moment = require('moment')
 const Generator = require('yeoman-generator')
 
 const {
-  printRick
-} = require('../../utils/console-tools')
+  RICK,
+  ABOUT_WORK,
+  ENJOY,
+} = require('../../utils/awsome-words')
 
 
 module.exports = class extends Generator {
@@ -31,8 +33,8 @@ module.exports = class extends Generator {
   }
 
   initializing() {
-    printRick()
-    this.log('Work is stupid,the whole point is to get less of it.')
+    this.log(RICK)
+    this.log(ABOUT_WORK)
   }
 
   prompting() {
@@ -152,10 +154,11 @@ module.exports = class extends Generator {
   install() {
     this.spawnCommand('cd', [this.options.appName])
 
-    // this.npmInstall()
+    this.npmInstall()
+    this.log(ENJOY)
   }
 
   end() {
-    // this.spawnCommand('npm', ['start'])
+    this.spawnCommand('npm', ['start'])
   }
 }
