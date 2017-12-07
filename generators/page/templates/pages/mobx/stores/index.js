@@ -1,5 +1,5 @@
-import UIStore from './ui-store'
-import RequestStore from './request-store'
+import UIStore from './ui'
+import RequestStore from './request'
 
 export default class RootModel {
   constructor() {
