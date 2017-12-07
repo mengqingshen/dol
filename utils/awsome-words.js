@@ -15,7 +15,7 @@ exports.RICK = `
 `
 
 exports.ABOUT_WORK = `
-Work is stupid, the whole point is to get less of it.  -- by rick
+Work is stupid, the whole point is to get less of it.  -- by Rick
 `
 
 exports.WELCOME = `
