@@ -6,6 +6,7 @@
 const fs = require('fs')
 const path = require('path')
 const moment = require('moment')
+const open = require('open')
 const Generator = require('yeoman-generator')
 
 const {
@@ -100,6 +101,8 @@ module.exports = class extends Generator {
     config.path[this.answers.pageName] = this.answers.pagePath
 
     this.config.set(config)
+
+    open(`http://127.0.0.1:3000${this.answers.pagePath}`)
   }
 
   _copyFilesInPages() {
