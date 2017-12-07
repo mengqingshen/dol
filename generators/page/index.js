@@ -87,7 +87,8 @@ module.exports = class extends Generator {
   }
 
   writing() {
-
+    this._copyFilesInPages()
+    this._copyFilesInApis()
   }
 
   install() {}
@@ -134,14 +135,14 @@ module.exports = class extends Generator {
       })
     }
 
-    const SOURCE_ROOT = this.templatePath(`/pages/${this.answers.pageDataFlowPlan}`)
+    const SOURCE_ROOT = this.templatePath(`pages/${this.answers.pageDataFlowPlan}`)
     const DESTINATION_ROOT = this.destinationPath(`src/pages/${this.answers.pageName}`)
 
     copyDirAsTpl(SOURCE_ROOT, DESTINATION_ROOT)
   }
 
   _copyFilesInApis() {
-    const fullPathOfSource = this.templatePath('/apis/page-name.js')
+    const fullPathOfSource = this.templatePath('apis/page-name.js')
     const fullPathOfDestination = this.destinationPath(`src/apis/${this.answers.pageName}.js`)
     this.fs.copyTpl(fullPathOfSource, fullPathOfDestination, this.answers, this.tplSettings)
   }

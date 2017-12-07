@@ -20,7 +20,7 @@ const getHtmlWebpackPlugins = entriesObj => Object.keys(entriesObj).map(entryNam
   chunks: ['common', 'vendor', entryName],
   title: appJSON.title[entryName],
   env: process.env.NODE_ENV,
-  template: 'src/templates/waimai-crm.ejs',
+  template: 'src/templates/default.ejs',
   filename: `html/${entryName}.html`,
   chunksSortMode: 'dependency'
 }))
