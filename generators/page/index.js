@@ -8,6 +8,10 @@ const path = require('path')
 const moment = require('moment')
 const Generator = require('yeoman-generator')
 
+const {
+  toFolderName
+} = require('../../utils/string-tools')
+
 module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts)
@@ -18,7 +22,11 @@ module.exports = class extends Generator {
     }
 
     // yo rick:page [pageName]
-    this.argument('pageName', { type: String, desc: '页面名字', required: true })
+    this.argument('pageName', {
+      type: pageName => toFolderName(pageName),
+      desc: 'name of the folder of the page',
+      required: true
+    })
 
     this.answers = {
       pageCreateDate: moment().format('MM/DD/YYYY'),
@@ -41,7 +49,7 @@ module.exports = class extends Generator {
         defult: ''
       },
       {
-        type: 'checkbox',
+        type: 'list',
         name: 'pageDataFlowPlan',
         default: 'mobx',
         message: 'plan of data flow',
@@ -79,6 +87,21 @@ module.exports = class extends Generator {
   }
 
   writing() {
+
+  }
+
+  install() {}
+
+  end() {
+    const config = this.config.getAll()
+    config.title[this.answers.pageName] = this.answers.pageTitle
+
+    config.path[this.answers.pageName] = this.answers.pagePath
+
+    this.config.set(config)
+  }
+
+  _copyFilesInPages() {
     /**
      * @description 将 template 下的所有文件都复制过去，并对文件进行 ejs render
      * @param {*} fullPathOfSource 
@@ -111,20 +134,15 @@ module.exports = class extends Generator {
       })
     }
 
-    const SOURCE_ROOT = this.templatePath(this.answers.pageDataFlowPlan[0])
+    const SOURCE_ROOT = this.templatePath(`/pages/${this.answers.pageDataFlowPlan}`)
     const DESTINATION_ROOT = this.destinationPath(`src/pages/${this.answers.pageName}`)
 
     copyDirAsTpl(SOURCE_ROOT, DESTINATION_ROOT)
   }
 
-  install() {}
-
-  end() {
-    const config = this.config.getAll()
-    config.title[this.answers.pageName] = this.answers.pageTitle
-
-    config.path[this.answers.pageName] = this.answers.pagePath
-
-    this.config.set(config)
+  _copyFilesInApis() {
+    const fullPathOfSource = this.templatePath('/apis/page-name.js')
+    const fullPathOfDestination = this.destinationPath(`src/apis/${this.answers.pageName}.js`)
+    this.fs.copyTpl(fullPathOfSource, fullPathOfDestination, this.answers, this.tplSettings)
   }
 }

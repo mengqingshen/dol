@@ -1,6 +1,6 @@
 /**
- * @author <$= appAuthorName $>, <$= appAuthorEmail $>
- * @file where your common api is defined. <$= appCreateDate $>
+ * @author <$= pageAuthorName $>, <$= pageAuthorEmail $>
+ * @file api for page <$= pageName $>. <$= pageCreateDate $>
  */
 
 import { get, post } from 'axios'

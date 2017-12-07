@@ -25,7 +25,7 @@ module.exports = class extends Generator {
     }
 
     // yo rick [appName]
-    this.argument('appName', { type: String, desc: '项目名字', required: true })
+    this.argument('appName', { type: String, desc: '项目名字', required: false })
 
     this.answers = {
       appCreateDate: moment().format('MM/DD/YYYY')
@@ -40,10 +40,17 @@ module.exports = class extends Generator {
   prompting() {
     return this.prompt([
       {
+        type: 'confirm',
+        name: 'isUnderTheAppRootDir',
+        message: 'no name provided. You are already under the root of the app ?',
+        when: () => this.options.appName === undefined,
+        default: () => true
+      },
+      {
         type: 'input',
         name: 'appName',
         message: 'name of the app',
-        default: this.options.appName
+        default: this.options.appName || this.destinationPath().split('/').pop()
       },
       {
         type: 'input',
@@ -95,20 +102,40 @@ module.exports = class extends Generator {
 
   configuring() {
     // 将新创建的项目目录作为脚手架项目的根目录（默认是执行 yo rick [appName] 是所在的目录）
-    this.destinationRoot(this.options.appName)
+    if (!this.answers.isUnderTheAppRootDir) {
+      this.destinationRoot(this.options.appName)
+    }
 
     // 在根目录生成 .yo-rc.json , 确保后续命令都能知道根目录
     this.config.save()
 
     // 初始化 .yo-rc.json
-    this.config.set({
+    this.config.save({
       cdn: {
-        bucketName: this.options.cdnBucketName,
-        accessKeyId: this.options.cdnAccessKeyId,
-        secretAccessKey: this.options.cdnSecretAccessKey
+        bucketName: this.answers.cdnBucketName,
+        accessKeyId: this.answers.cdnAccessKeyId,
+        secretAccessKey: this.answers.cdnSecretAccessKey
       },
       title: {},
-      path: {}
+      path: {},
+      proxy: {
+        api: {
+          rule: [],
+          options: {
+            target: '',
+            changeOrigin: true,
+            logLevel: 'debug'
+          }
+        },
+        static: {
+          rule: ['**/*.html', '**/*.js', '**/*.css'],
+          options: {
+            target: 'http://localhost:3001',
+            changeOrigin: true,
+            logLevel: 'debug'
+          }
+        }
+      }
     })
   }
 
