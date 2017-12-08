@@ -41,7 +41,6 @@ const webpackBaseConfig = {
   cache: true,
   resolve: {
     alias: {
-      // moment$: 'moment/moment.js',
       '@components': path.resolve(APP_PATH, 'components'),
       '@api': path.resolve(APP_PATH, 'api'),
       '@helpers': path.resolve(APP_PATH, 'helpers'),

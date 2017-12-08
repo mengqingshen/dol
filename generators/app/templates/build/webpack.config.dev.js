@@ -4,12 +4,7 @@ const webpackBaseConfig = require('./webpack.config.base.js')
 
 const webpackConfig = {
   resolve: {
-    alias: {
-      '@mfe/mrc/Row': '/Users/mengqingshen/meituan/waimai_mfe_mrc/src/Grid/Row',
-      '@mfe/mrc/Col': '/Users/mengqingshen/meituan/waimai_mfe_mrc/src/Grid/Col',
-      '@mfe/mrc': '/Users/mengqingshen/meituan/waimai_mfe_mrc/src',
-      src: '/Users/mengqingshen/meituan/waimai_mfe_mrc/src',
-    }
+    alias: {}
   },
   devtool: 'cheap-module-eval-source-map',
   plugins: [

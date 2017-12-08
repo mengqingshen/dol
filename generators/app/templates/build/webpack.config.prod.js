@@ -9,7 +9,6 @@ const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 const merge = require('webpack-merge')
 const WebpackMd5Hash = require('webpack-md5-hash')
 const Visualizer = require('webpack-visualizer-plugin')
-const PackageStatistic = require('@mfe/webpack-mfe-statistics')
 
 const webpackBaseConfig = require('./webpack.config.base.js')
 
@@ -52,10 +51,7 @@ const config = {
     new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en|zh-cn/),
     new WebpackMd5Hash(),
-    new Visualizer(),
-    // new PackageStatistic({
-    //   ROOT_PATH: ROOT_PATH
-    // })
+    new Visualizer()
   ],
   module: {
     rules: [{
