@@ -12,11 +12,13 @@
     "url": "git+https://github.com/mengqingshen/generator-rick.git"
   },
   "keywords": [
+    "generator-rick",
     "yeoman-generator",
     "scaffold",
     "rick",
     "react",
-    "vue"
+    "redux",
+    "mobx"
   ],
   "author": "mengqingshen",
   "license": "ISC",
