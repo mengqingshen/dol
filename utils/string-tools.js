@@ -7,5 +7,5 @@ module.exports = {
   isFileName: fileName => /[a-z]+(-[a-z])*/.test(fileName),
   toFileName: name => name.replace(/([A-Z])/g, '-$1').toLowerCase(),
   isFolderName: folderName => /[a-z]+(_[a-z])*/.test(folderName),
-  toFolderName: name => name.replace(/([A-Z])/g, '_$1').toLowerCase()
+  toFolderName: name => name.replace(/([a-z])([A-Z])/g, '$1_$2').toLowerCase()
 }
