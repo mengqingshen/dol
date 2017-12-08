@@ -7,7 +7,7 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'mobx-react'
 import DevTools from 'mobx-react-devtools'
-import Index from './components'
+import IndexContainer from './containers'
 import RootStore from './stores'
 
 import './style.scss'
@@ -19,7 +19,7 @@ render(
   <div className="<$= pageRootClassName $>">
     <DevTools />
     <Provider {...rootStore} >
-      <Index />
+      <IndexContainer />
     </Provider>
   </div>,
   document.getElementById('page-content')

@@ -5,11 +5,10 @@
 
 import React from 'react'
 import ReactPropTypes from 'prop-types'
-import { observer, inject } from 'mobx-react'
+import { observer } from 'mobx-react'
 
-@inject('uiStore')
 @observer
-export default class Index extends React.Component {
+export default class IndexContainers extends React.Component {
   static propTypes = {
     uiStore: ReactPropTypes.shape({
       isLoading: ReactPropTypes.bool,
