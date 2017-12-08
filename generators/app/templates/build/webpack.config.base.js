@@ -42,7 +42,7 @@ const webpackBaseConfig = {
   resolve: {
     alias: {
       '@components': path.resolve(APP_PATH, 'components'),
-      '@api': path.resolve(APP_PATH, 'api'),
+      '@apis': path.resolve(APP_PATH, 'apis'),
       '@helpers': path.resolve(APP_PATH, 'helpers'),
       '@styles': path.resolve(APP_PATH, 'styles'),
       '@modules': path.resolve(APP_PATH, 'modules'),

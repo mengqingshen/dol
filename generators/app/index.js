@@ -79,6 +79,11 @@ module.exports = class extends Generator {
       },
       {
         type: 'input',
+        name: 'deployTargetDir',
+        message: 'the path to deploy your project with plus'
+      },
+      {
+        type: 'input',
         name: 'cdnBucketName',
         message: 'CDN bucketName',
         store: true
