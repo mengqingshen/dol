@@ -15,7 +15,7 @@ import './style.scss'
 const rootStore = new RootStore()
 
 const DevTools = () => {
-  if (['debug', 'development'].includes(process.env.NODE_ENV)) {
+  if (['debug'].includes(process.env.NODE_ENV)) {
     const MobxDevTools = require('mobx-react-devtools').default
     return <MobxDevTools />
   }
