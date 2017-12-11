@@ -4,18 +4,11 @@
  */
 
 import React from 'react'
-import ReactPropTypes from 'prop-types'
 import { observer } from 'mobx-react'
 
 @observer
 export default class IndexContainers extends React.Component {
-  static propTypes = {
-    uiStore: ReactPropTypes.shape({
-      isLoading: ReactPropTypes.bool,
-      doLoading: ReactPropTypes.func,
-      doUnloading: ReactPropTypes.func,
-    })
-  }
+  static propTypes = {}
 
   render() {
     return (
