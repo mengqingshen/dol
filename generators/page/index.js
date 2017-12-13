@@ -82,6 +82,11 @@ module.exports = class extends Generator {
         message: 'your email',
         store: true
       },
+      {
+        type: 'input',
+        name: 'pageApiWiki',
+        message: 'the address of the wiki for the api of this page'
+      }
     ]).then((answers) => {
       Object.assign(this.answers, answers, { pageName: this.options.pageName })
     })

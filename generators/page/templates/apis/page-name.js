@@ -1,6 +1,7 @@
 /**
  * @author <$= pageAuthorName $>, <$= pageAuthorEmail $>
  * @file api for page <$= pageName $>. <$= pageCreateDate $>
+ * @see <$= pageApiWiki $>
  */
 
 import { get, post } from 'axios'
