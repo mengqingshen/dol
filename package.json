@@ -1,9 +1,10 @@
 {
   "name": "generator-rick",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A scaffold to build react project with powerful feature, and more.",
   "files": [
-    "generators"
+    "generators",
+    "utils"
   ],
   "main": "",
   "scripts": {},
