@@ -27,7 +27,7 @@ Work is stupid, the whole point is to get less of it.  -- by Rick
 
 exports.WELCOME = `
 `
-exports.ENJOY = `                                         
+exports.ENJOY = `                                
 GEEEED                                        
 #i#####                                        
 #WW##.                 Et                      

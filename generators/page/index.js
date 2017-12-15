@@ -7,6 +7,7 @@ const fs = require('fs')
 const path = require('path')
 const moment = require('moment')
 const open = require('open')
+const shell = require('shelljs')
 const Generator = require('yeoman-generator')
 
 const {
@@ -40,20 +41,20 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'pageTitle',
-        message: 'title of the page',
+        message: '页面标题',
         defult: ''
       },
       {
         type: 'input',
         name: 'pagePath',
-        message: 'the path of the page',
+        message: '页面访问路径',
         defult: ''
       },
       {
         type: 'list',
         name: 'pageDataFlowPlan',
         default: 'mobx',
-        message: 'plan of data flow',
+        message: '数据流方案',
         choices: [
           {
             name: 'mobx',
@@ -73,19 +74,19 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'pageAuthorName',
-        message: 'your name',
+        message: '页面作者姓名',
         store: true
       },
       {
         type: 'input',
         name: 'pageAuthorEmail',
-        message: 'your email',
+        message: '页面作者电子邮箱',
         store: true
       },
       {
         type: 'input',
         name: 'pageApiWiki',
-        message: 'the address of the wiki for the api of this page'
+        message: '页面对应的 API 文档地址'
       }
     ]).then((answers) => {
       Object.assign(this.answers, answers, { pageName: this.options.pageName })

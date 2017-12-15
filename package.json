@@ -29,6 +29,7 @@
   "homepage": "https://github.com/mengqingshen/generator-rick#readme",
   "dependencies": {
     "moment": "^2.19.3",
+    "shelljs": "^0.7.8",
     "yeoman-generator": "^2.0.1"
   },
   "devDependencies": {

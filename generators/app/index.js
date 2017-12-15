@@ -6,12 +6,13 @@
 const fs = require('fs')
 const path = require('path')
 const moment = require('moment')
+const shell = require('shelljs')
 const Generator = require('yeoman-generator')
 
 const {
   RICK,
   ABOUT_WORK,
-  ENJOY,
+  ENJOY
 } = require('../../utils/awsome-words')
 
 
@@ -42,45 +43,52 @@ module.exports = class extends Generator {
       {
         type: 'confirm',
         name: 'isUnderTheAppRootDir',
-        message: 'no name provided. You are already under the root of the app ?',
+        message: '没提供项目名称，是否当前是在创建好的项目的顶级目录下？',
         when: () => this.options.appName === undefined,
         default: () => true
       },
       {
         type: 'input',
         name: 'appName',
-        message: 'name of the app',
+        message: '项目名称（将作为项目文件夹名称）',
         default: this.options.appName || this.destinationPath().split('/').pop()
       },
       {
         type: 'input',
         name: 'appDesc',
-        message: 'description of the app',
-        defult: ''
+        message: '项目描述',
+        default: ''
       },
       {
         type: 'input',
         name: 'appAuthorName',
-        message: 'your name',
+        message: '项目创建者',
         store: true
       },
       {
         type: 'input',
         name: 'appAuthorEmail',
-        message: 'your email',
+        message: '项目创建者电子邮箱',
         store: true
       },
       {
         type: 'input',
         name: 'appVersion',
-        message: 'version of the app',
+        message: '项目版本号',
         default: '1.0.0',
         store: true
       },
       {
         type: 'input',
         name: 'deployTargetDir',
-        message: 'the path to deploy your project with plus'
+        message: 'PLUS 持续交付部署路径'
+      },
+      {
+        type: 'input',
+        name: 'devServerHost',
+        message: '开发环境的地址（比如: http://dev.example.com）',
+        store: true,
+        default: ''
       },
       {
         type: 'input',
@@ -112,10 +120,10 @@ module.exports = class extends Generator {
     }
 
     // 在根目录生成 .yo-rc.json , 确保后续命令都能知道根目录
-    this.config.save()
+    // this.config.save()
 
     // 初始化 .yo-rc.json
-    this.config.save({
+    this.config.set({
       cdn: {
         bucketName: this.answers.cdnBucketName,
         accessKeyId: this.answers.cdnAccessKeyId,
@@ -124,14 +132,19 @@ module.exports = class extends Generator {
       title: {},
       path: {},
       proxy: {
-        api: {
-          rule: [],
-          options: {
-            target: '',
-            changeOrigin: true,
-            logLevel: 'debug'
+        api: (() => {
+          if (/^https?\/\/.*/.test(this.answers.devServerHost)) {
+            return {
+              rule: [],
+              options: {
+                target: this.answers.devServerHost,
+                changeOrigin: true,
+                logLevel: 'debug'
+              }
+            }
           }
-        },
+          return null
+        })(),
         static: {
           rule: ['**/*.html', '**/*.js', '**/*.css'],
           options: {
@@ -184,13 +197,13 @@ module.exports = class extends Generator {
   }
 
   install() {
-    this.spawnCommand('cd', [this.options.appName])
-
+    // this.spawnCommand('cd', [this.options.appName])
+    if (!this.answers.isUnderTheAppRootDir) shell.exec(`cd ${this.options.appName}`)
     this.npmInstall()
-    this.log(ENJOY)
   }
 
   end() {
     this.spawnCommand('npm', ['start'])
+    this.log(ENJOY)
   }
 }

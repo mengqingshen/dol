@@ -25,7 +25,7 @@ app.use(new CSRF({}))
 app.use(c2k(proxyMiddleware(proxyConfig.static.rule, proxyConfig.static.options)))
 
 // 代理至 中间层 dev
-app.use(c2k(proxyMiddleware(proxyConfig.api.rule, proxyConfig.api.options)))
+if (proxyConfig.api) app.use(c2k(proxyMiddleware(proxyConfig.api.rule, proxyConfig.api.options)))
 
 app.on('error', (err) => {
   log.error(err.stack)
