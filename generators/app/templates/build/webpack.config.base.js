@@ -46,6 +46,7 @@ const webpackBaseConfig = {
       '@helpers': path.resolve(APP_PATH, 'helpers'),
       '@styles': path.resolve(APP_PATH, 'styles'),
       '@modules': path.resolve(APP_PATH, 'modules'),
+      '@rick/config': path.resolve(ROOT_PATH, '.yo-rc.json'),
       node_modules: path.resolve(ROOT_PATH, 'node_modules')
     },
     modules: [

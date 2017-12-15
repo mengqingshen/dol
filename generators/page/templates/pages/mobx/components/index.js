@@ -12,7 +12,7 @@ export default class IndexContainers extends React.Component {
 
   render() {
     return (
-      <div>Hello world!</div>
+      <div className="<$= pageName $>">Hello world!</div>
     )
   }
 }
