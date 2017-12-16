@@ -1,5 +1,5 @@
 {
-  "name": "generator-rick",
+  "name": "generator-dolphin",
   "version": "0.0.4",
   "description": "A scaffold to build react project with powerful feature, and more.",
   "files": [
@@ -10,13 +10,13 @@
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mengqingshen/generator-rick.git"
+    "url": "git+https://github.com/mengqingshen/generator-dolphin.git"
   },
   "keywords": [
-    "generator-rick",
+    "generator-dolphin",
     "yeoman-generator",
     "scaffold",
-    "rick",
+    "dolphin",
     "react",
     "redux",
     "mobx"
@@ -24,9 +24,9 @@
   "author": "mengqingshen",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mengqingshen/generator-rick/issues"
+    "url": "https://github.com/mengqingshen/generator-dolphin/issues"
   },
-  "homepage": "https://github.com/mengqingshen/generator-rick#readme",
+  "homepage": "https://github.com/mengqingshen/generator-dolphin#readme",
   "dependencies": {
     "moment": "^2.19.3",
     "shelljs": "^0.7.8",
