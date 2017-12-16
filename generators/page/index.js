@@ -1,6 +1,6 @@
 /**
  * @author mengqingshen, mengqingshen_sean@outlook.com
- * @file the main file to work with `yo rick:page` when trying to create a new page. 12/04/2017
+ * @file the main file to work with `yo dolphin:page` when trying to create a new page. 12/04/2017
  */
 
 const fs = require('fs')
@@ -22,7 +22,7 @@ module.exports = class extends Generator {
       delimiter: '$'
     }
 
-    // yo rick:page [pageName]
+    // yo dolphin:page [pageName]
     this.argument('pageName', {
       type: pageName => toFolderName(pageName),
       desc: 'name of the folder of the page',

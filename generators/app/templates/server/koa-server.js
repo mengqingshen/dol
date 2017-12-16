@@ -10,7 +10,7 @@ import config from '../.yo-rc.json'
 
 import webpackServer from './webpack-server.js'
 
-const proxyConfig = config['generator-rick'].proxy
+const proxyConfig = config['generator-dolphin'].proxy
 
 const PORT = 3000
 const app = new Koa()

@@ -1,6 +1,6 @@
 /**
  * @author mengqingshen, mengqingshen_sean@outlook.com
- * @file the main file to work with `yo rick:module` when trying to create a new module. 12/16/2017
+ * @file the main file to work with `yo dolphin:module` when trying to create a new module. 12/16/2017
  */
 
 const Generator = require('yeoman-generator')
@@ -89,7 +89,7 @@ module.exports = class extends Generator {
           if (!fs.existsSync(moduleFullPath)) {
             return true
           }
-          return '该文件已存在，如要覆盖，请先通过 yo rick:clean 删除该文件！'
+          return '该文件已存在，如要覆盖，请先通过 yo dolphin:clean 删除该文件！'
         },
         filter: moduleName => toFileName(moduleName),
         when: ({ isCleaningPage }) => !isCleaningPage || this.answers.moduleType !== 'page',

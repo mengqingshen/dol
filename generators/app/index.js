@@ -1,6 +1,6 @@
 /**
  * @author mengqingshen, mengqingshen_sean@outlook.com
- * @file the main file to work with `yo rick` when trying to init your project. 12/04/2017
+ * @file the main file to work with `yo dolphin` when trying to init your project. 12/04/2017
  */
 
 const fs = require('fs')
@@ -10,7 +10,7 @@ const shell = require('shelljs')
 const Generator = require('yeoman-generator')
 
 const {
-  RICK,
+  DOLPHIN,
   ABOUT_WORK,
   ENJOY
 } = require('../../utils/awsome-words')
@@ -25,7 +25,7 @@ module.exports = class extends Generator {
       delimiter: '$'
     }
 
-    // yo rick [appName]
+    // yo dolphin [appName]
     this.argument('appName', { type: String, desc: '项目名字', required: false })
 
     this.answers = {
@@ -34,7 +34,7 @@ module.exports = class extends Generator {
   }
 
   initializing() {
-    this.log(RICK)
+    this.log(DOLPHIN)
     this.log(ABOUT_WORK)
   }
 
@@ -114,7 +114,7 @@ module.exports = class extends Generator {
   }
 
   configuring() {
-    // 将新创建的项目目录作为脚手架项目的根目录（默认是执行 yo rick [appName] 是所在的目录）
+    // 将新创建的项目目录作为脚手架项目的根目录（默认是执行 yo dolphin [appName] 是所在的目录）
     if (!this.answers.isUnderTheAppRootDir) {
       this.destinationRoot(this.options.appName)
     }

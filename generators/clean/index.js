@@ -1,6 +1,6 @@
 /**
  * @author mengqingshen, mengqingshen_sean@outlook.com
- * @file the main file to work with `yo rick:clean` when trying to clean a page or a module. 12/15/2017
+ * @file the main file to work with `yo dolphin:clean` when trying to clean a page or a module. 12/15/2017
  */
 const Generator = require('yeoman-generator')
 const fs = require('fs')
@@ -14,7 +14,7 @@ module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts)
 
-    // yo rick:clean [pageName] [[my-module-name]]
+    // yo dolphin:clean [pageName] [[my-module-name]]
     this.argument('pageName', {
       type: pageName => toFolderName(pageName),
       desc: '页面名称（页面所在文件夹的名字）',
