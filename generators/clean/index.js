@@ -17,7 +17,7 @@ module.exports = class extends Generator {
     // yo rick:clean [pageName] [[my-module-name]]
     this.argument('pageName', {
       type: pageName => toFolderName(pageName),
-      desc: '页面目录名称',
+      desc: '页面名称（页面所在文件夹的名字）',
       required: true
     })
 
@@ -61,6 +61,7 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'pageName',
+        filter: moduleName => toFolderName(moduleName),
         message: '页面名称（页面所在目录名称）',
         default: this.answers.pageName,
         validate: (pageName) => {
@@ -81,7 +82,7 @@ module.exports = class extends Generator {
       {
         type: 'list',
         name: 'moduleType',
-        message: '请选择模块类型',
+        message: '模块文件类型',
         default: this.answers.moduleType,
         validate: (moduleType) => {
           if (this.moduleChoices.map(({ value }) => value).includes(moduleType)) {
@@ -95,7 +96,8 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'moduleName',
-        message: '要删除的模块名称',
+        message: '模块文件名称',
+        filter: moduleName => toFileName(moduleName),
         default: this.answers.moduleName,
         validate: (moduleName, { pageName, moduleType }) => {
           const moduleFullPath = this.destinationPath(`src/pages/${pageName}/${moduleType}s/${moduleName}.js`)

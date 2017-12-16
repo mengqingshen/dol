@@ -4,10 +4,11 @@
  */
 
 import React from 'react'
-import { observer } from 'mobx-react'
+import { observer, inject } from 'mobx-react'
 
+@inject('mainStore')
 @observer
-export default class IndexContainers extends React.Component {
+export default class extends React.Component {
   static propTypes = {}
 
   render() {

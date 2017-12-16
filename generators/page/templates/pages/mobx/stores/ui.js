@@ -6,7 +6,7 @@
 import { observable, action } from 'mobx'
 import _ from 'lodash'
 
-export default class UIStore {
+export default class {
   @observable loadQueue = 0
   @observable isLoading = false
 

@@ -81,7 +81,7 @@ class MyAxios {
   }
 }
 
-export default class RequestStore {
+export default class {
   caches = {}
 
   modes = ['noise', 'normal', 'silence']

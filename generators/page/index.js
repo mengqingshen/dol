@@ -7,7 +7,6 @@ const fs = require('fs')
 const path = require('path')
 const moment = require('moment')
 const open = require('open')
-const shell = require('shelljs')
 const Generator = require('yeoman-generator')
 
 const {
@@ -40,15 +39,38 @@ module.exports = class extends Generator {
     return this.prompt([
       {
         type: 'input',
+        name: 'pageName',
+        filter: pageName => toFolderName(pageName),
+        message: '页面名称（作为页面所在文件夹的名字）',
+        validate: (pageName) => {
+          if (!pageName) {
+            return '页面名称不可以为空！'
+          }
+          return true
+        },
+        default: this.options.pageName
+      },
+      {
+        type: 'input',
         name: 'pageTitle',
         message: '页面标题',
-        defult: ''
+        validate: (pageTitle) => {
+          if (!pageTitle) {
+            return '页面标题不可以为空！'
+          }
+          return true
+        }
       },
       {
         type: 'input',
         name: 'pagePath',
         message: '页面访问路径',
-        defult: ''
+        validate: (pageTitle) => {
+          if (!pageTitle) {
+            return '页面访问路径不可以为空！'
+          }
+          return true
+        }
       },
       {
         type: 'list',
