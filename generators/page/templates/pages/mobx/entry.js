@@ -6,7 +6,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'mobx-react'
-import Index from './components'
+import Index from './containers'
 import RootStore from './stores'
 
 import './style.scss'
