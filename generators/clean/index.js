@@ -101,7 +101,6 @@ module.exports = class extends Generator {
         default: this.answers.moduleName,
         validate: (moduleName, { pageName, moduleType }) => {
           const moduleFullPath = this.destinationPath(`src/pages/${pageName}/${moduleType}s/${moduleName}.js`)
-          console.log(moduleFullPath)
           if (fs.existsSync(moduleFullPath)) {
             return true
           }

@@ -4,7 +4,7 @@
   "description": "<$= appDesc $>",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=debug supervisor -w package.json server build .yo-rc.json ./server/index.js",
+    "start": "NODE_ENV=debug supervisor -w package.json server src build .yo-rc.json ./server/index.js",
     "build": "NODE_ENV=production webpack --config build/webpack.config.prod.js --progress --colors",
     "mock": "vane run --toPort 3000 -p 8345 -m 8346 --testBodyPort 8348",
     "validate": "npm ls",
