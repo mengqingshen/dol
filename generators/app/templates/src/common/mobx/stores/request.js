@@ -1,6 +1,6 @@
 /**
- * @author <$= pageAuthorName $>, <$= pageAuthorEmail $>
- * @file Store for request. <$= pageCreateDate $>
+ * @author <$= appAuthorName $>, <$= appAuthorEmail $>
+ * @file Store for request. <$= appCreateDate $>
  */
 
 

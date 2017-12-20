@@ -41,6 +41,7 @@ const webpackBaseConfig = {
   cache: true,
   resolve: {
     alias: {
+      '@common': path.resolve(APP_PATH, 'common'),
       '@components': path.resolve(APP_PATH, 'components'),
       '@apis': path.resolve(APP_PATH, 'apis'),
       '@helpers': path.resolve(APP_PATH, 'helpers'),
