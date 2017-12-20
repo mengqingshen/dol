@@ -3,6 +3,7 @@
  * @file Store for request. <$= pageCreateDate $>
  */
 
+
 import axios from 'axios'
 import {
   toastError,
@@ -14,7 +15,8 @@ const ERROR_MSG_OF_SERVER = '系统出错，请稍后再试'
 const SUCCESS_MSG_OF_SERVER = '操作成功'
 
 const defaultOptions = {
-  isDelay: true
+  isDelay: true,
+  disableLoading: false
 }
 
 class MyAxios {
@@ -42,7 +44,13 @@ class MyAxios {
   }
 
   _startLoading() {
+    if (this.options.disableLoading) return
     this.rootStore.uiStore.doLoading(this.options.isDelay)
+  }
+
+  _stopLoading() {
+    if (this.options.disableLoading) return
+    this.rootStore.uiStore.doUnloading()
   }
 
   /**
@@ -55,14 +63,14 @@ class MyAxios {
         return config
       },
       (error) => {
-        this.rootStore.uiStore.doUnloading()
+        this._stopLoading()
         toastError((error && error.response) ? error.response : ERROR_MSG_OF_PAGE)
       }
     )
 
     this.instance.interceptors.response.use(
       (response) => {
-        this.rootStore.uiStore.doUnloading()
+        this._stopLoading()
         if (response && response.data) {
           if (response.data.code === 0) {
             if (['noise'].includes(this.mode)) toastSuccess(response.data.msg || SUCCESS_MSG_OF_SERVER)
@@ -73,7 +81,7 @@ class MyAxios {
         return response
       },
       (error) => {
-        this.rootStore.uiStore.doUnloading()
+        this._stopLoading()
         if (['normal', 'noise'].includes(this.mode)) toastError(ERROR_MSG_OF_SERVER)
         return Promise.reject(error)
       }
@@ -81,7 +89,7 @@ class MyAxios {
   }
 }
 
-export default class {
+export default class RequestStore {
   caches = {}
 
   modes = ['noise', 'normal', 'silence']
@@ -94,7 +102,8 @@ export default class {
     if (!this.modes.includes(mode)) {
       throw new Error('valid mode must be one of "noise" "normal" and "silence"')
     }
-    if (!this.caches[mode]) this.caches[mode] = new MyAxios(this.rootStore, mode, options)
-    return this.caches[mode]
+    const key = mode + JSON.stringify(options)
+    if (!this.caches[key]) this.caches[key] = new MyAxios(this.rootStore, mode, options)
+    return this.caches[key]
   }
 }
