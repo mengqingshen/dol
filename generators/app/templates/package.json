@@ -115,7 +115,7 @@
     "react": "^15.4.1",
     "react-addons-pure-render-mixin": "^15.6.2",
     "react-async-component": "^1.0.0-beta.3",
-    "react-dom": "http://r.npm.sankuai.com/react-dom/download/react-dom-15.4.2.tgz",
+    "react-dom": "^15.4.1",
     "react-icons-kit": "^1.0.7",
     "react-immutable-proptypes": "^2.1.0",
     "react-redux": "^5.0.6",
