@@ -7,8 +7,8 @@
 
 const yeoman = require('yeoman-environment')
 
+console.log('argv', process.argv)
 const env = yeoman.createEnv()
 env.register(require.resolve('generator-dolphin'), 'dolphin:app')
 
-console.log('argv', process.argv)
 env.run('dolphin:app', () => {})

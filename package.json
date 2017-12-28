@@ -7,7 +7,7 @@
     "generators",
     "utils"
   ],
-  "main": "",
+  "main": "generators/app/index.js",
   "scripts": {},
   "repository": {
     "type": "git",
