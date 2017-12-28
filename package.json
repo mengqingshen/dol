@@ -1,11 +1,11 @@
 {
   "name": "generator-dolphin",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "A scaffold to build react project with powerful feature, and more.",
   "files": [
+    "bin",
     "generators",
-    "utils",
-    "bin"
+    "utils"
   ],
   "main": "",
   "scripts": {},
