@@ -27,7 +27,7 @@
     "url": "https://github.com/mengqingshen/generator-dolphin/issues"
   },
   "bin": {
-    "do": "./bin/dol.js"
+    "dol": "./bin/dol.js"
   },
   "homepage": "https://github.com/mengqingshen/generator-dolphin#readme",
   "dependencies": {
