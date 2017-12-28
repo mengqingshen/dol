@@ -29,8 +29,9 @@
   "homepage": "https://github.com/mengqingshen/generator-dolphin#readme",
   "dependencies": {
     "moment": "^2.19.3",
+    "open": "0.0.5",
     "shelljs": "^0.7.8",
-    "yeoman-generator": "^2.0.1",
-    "open": "0.0.5"
+    "yeoman-environment": "^2.0.5",
+    "yeoman-generator": "^2.0.1"
   }
 }
