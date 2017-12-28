@@ -1,6 +1,6 @@
 /**
- * @author mengqingshen, mengqingshen_sean@outlook.com
  * @file the main file to work with `yo dolphin:page` when trying to create a new page. 12/04/2017
+ * @author mengqingshen, mengqingshen_sean@outlook.com
  */
 
 const fs = require('fs')

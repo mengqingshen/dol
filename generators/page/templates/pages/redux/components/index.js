@@ -1,6 +1,6 @@
 /**
- * @author <$= pageAuthorName $>, <$= pageAuthorEmail $>
  * @file root react component for page named <$= pageName $>. <$= pageCreateDate $>
+ * @author <$= pageAuthorName $>, <$= pageAuthorEmail $>
  */
 
 import React from 'react'

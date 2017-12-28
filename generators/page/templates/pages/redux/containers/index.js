@@ -1,6 +1,6 @@
 /**
- * @author <$= pageAuthorName $>, <$= pageAuthorEmail $>
  * @file the root container of the page. <$= pageCreateDate $>
+ * @author <$= pageAuthorName $>, <$= pageAuthorEmail $>
  */
 
 import React from 'react'

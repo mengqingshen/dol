@@ -1,6 +1,6 @@
 /**
- * @author mengqingshen, mengqingshen_sean@outlook.com
  * @file the main file to work with `yo dolphin:clean` when trying to clean a page or a module. 12/15/2017
+ * @author mengqingshen, mengqingshen_sean@outlook.com
  */
 const Generator = require('yeoman-generator')
 const fs = require('fs')

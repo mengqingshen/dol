@@ -1,3 +1,8 @@
+/**
+ * @file Some words to show in interactions. 12/07/2017
+ * @author mengqingshen, mengqingshen_sean@outlook.com
+ */
+
 exports.DOLPHIN = `                                                 
                             GGGG                                
                           LLGGGG                                

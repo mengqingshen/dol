@@ -1,6 +1,6 @@
 /**
- * @author <$= pageAuthorName $>, <$= pageAuthorEmail $>
  * @file where you organize your actions. <$= pageCreateDate $>
+ * @author <$= pageAuthorName $>, <$= pageAuthorEmail $>
  */
 
 import { Map } from 'immutable'

@@ -1,3 +1,9 @@
+
+/**
+ * @file root store for page named <$= pageName $>. <$= pageCreateDate $>
+ * @author <$= pageAuthorName $>, <$= pageAuthorEmail $>
+ */
+
 import UIStore from '@common/mobx/store/ui'
 import RequestStore from '@common/mobx/store/request'
 import MainStore from './main'

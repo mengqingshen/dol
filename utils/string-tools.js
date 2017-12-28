@@ -1,6 +1,6 @@
 /**
- * @author mengqingshen, mengqingshen_sean@outlook.com
  * @file Some handly tools to operate string. 12/07/2017
+ * @author mengqingshen, mengqingshen_sean@outlook.com
  */
 module.exports = {
   folderNameToFileName: folderName => folderName.replace('_', '-'),

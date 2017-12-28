@@ -1,6 +1,6 @@
 /**
- * @author mengqingshen, mengqingshen_sean@outlook.com
  * @file the main file to work with `yo dolphin` when trying to init your project. 12/04/2017
+ * @author mengqingshen, mengqingshen_sean@outlook.com
  */
 
 const fs = require('fs')

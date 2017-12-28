@@ -1,6 +1,6 @@
 /**
- * @author <$= pageAuthorName $>, <$= pageAuthorEmail $>
  * @file store creator. <$= pageCreateDate $>
+ * @author <$= pageAuthorName $>, <$= pageAuthorEmail $>
  */
 
 import { createStore, applyMiddleware } from 'redux'
