@@ -27,6 +27,6 @@ if (validCommands.has(command)) {
 } else {
   console.error('无效的指令！')
   console.log(`
-    dol ${validCommands.keys().join('|')}
+    dol ${[...validCommands.keys()].join('|')}
   `)
 }
