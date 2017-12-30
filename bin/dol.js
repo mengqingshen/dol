@@ -19,16 +19,14 @@ const validCommands = new Map([
 
 const generatorsRoot = path.resolve(__dirname, '../generators')
 
-fs.readdir(generatorsRoot, (err, items) => {
-  if (!items || !items[0]) {
-    return
-  }
-  items.forEach((name) => {
-    validCommands.set(name, name)
-    env.register(require.resolve('generator-dolphin'), 'dolphin:app')
-  })
+const subDirs = fs.readdirSync(generatorsRoot)
+if (!subDirs || !subDirs[0]) {
+  return
+}
+subDirs.forEach((name) => {
+  validCommands.set(name, name)
+  env.register(require.resolve('generator-dolphin'), 'dolphin:app')
 })
-
 
 const command = process.argv[2] || DEFAULT_COMMAND
 
@@ -37,6 +35,6 @@ if (validCommands.has(command)) {
 } else {
   console.error('无效的指令！')
   console.log(`
-    dol ${[...validCommands.keys()].join('|')}
+dol ${[...validCommands.keys()].join('|')}
   `)
 }
