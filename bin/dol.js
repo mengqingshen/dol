@@ -2,23 +2,33 @@
 
 /**
  * @file where your common css is imported. <$= appCreateDate $>
- * @author <$= appAuthorName $>, <$= appAuthorEmail $>
+ * @author mengqingshen, mengqingshen_sean@outlook.com
  */
 
+
+const fs = require('fs')
+const path = require('path')
 const yeoman = require('yeoman-environment')
 
 const env = yeoman.createEnv()
-env.register(require.resolve('generator-dolphin'), 'dolphin:app')
+const DEFAULT_COMMAND = 'init'
 
 const validCommands = new Map([
-  ['init', 'app'],
-  ['app', 'app'],
-  ['page', 'page'],
-  ['module', 'module'],
-  ['clean', 'clean']
+  [DEFAULT_COMMAND, 'app']
 ])
 
-const DEFAULT_COMMAND = 'init'
+const generatorsRoot = path.resolve(__dirname, '../generators')
+
+fs.readdir(generatorsRoot, (err, items) => {
+  if (!items || !items[0]) {
+    return
+  }
+  items.forEach((name) => {
+    validCommands.set(name, name)
+    env.register(require.resolve('generator-dolphin'), 'dolphin:app')
+  })
+})
+
 
 const command = process.argv[2] || DEFAULT_COMMAND
 
