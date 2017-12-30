@@ -17,6 +17,7 @@ const validCommands = new Map([
   [DEFAULT_COMMAND, 'app']
 ])
 
+console.log(__dirname)
 const generatorsRoot = path.resolve(__dirname, '../generators')
 
 const subDirs = fs.readdirSync(generatorsRoot)
@@ -25,7 +26,7 @@ if (!subDirs || !subDirs[0]) {
 }
 subDirs.forEach((name) => {
   validCommands.set(name, name)
-  env.register(`${generatorsRoot}/${name}/index.js`, 'dolphin:app')
+  env.register(`${generatorsRoot}/${name}/index.js`, `dolphin:${name}`)
 })
 
 const command = process.argv[2] || DEFAULT_COMMAND
