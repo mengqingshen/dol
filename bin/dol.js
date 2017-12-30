@@ -25,7 +25,7 @@ if (!subDirs || !subDirs[0]) {
 }
 subDirs.forEach((name) => {
   validCommands.set(name, name)
-  env.register(require.resolve('generator-dolphin'), 'dolphin:app')
+  env.register(`${generatorsRoot}/${name}/index.js`, 'dolphin:app')
 })
 
 const command = process.argv[2] || DEFAULT_COMMAND
