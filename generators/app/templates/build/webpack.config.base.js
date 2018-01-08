@@ -12,7 +12,7 @@ const APP_PATH = path.resolve(ROOT_PATH, 'src')
 const BUILD_PATH = path.resolve(ROOT_PATH, 'public')
 const MODULES_PATH = path.resolve(APP_PATH, 'modules')
 
-const appJSON = JSON.parse(fs.readFileSync(path.resolve(ROOT_PATH, '.yo-rc.json'), 'utf-8'))['generator-dolphin']
+const appJSON = JSON.parse(fs.readFileSync(path.resolve(ROOT_PATH, 'config/page.json'), 'utf-8'))
 const entries = require('../src/helpers/get-entries')()
 
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
@@ -48,6 +48,7 @@ const webpackBaseConfig = {
       '@styles': path.resolve(APP_PATH, 'styles'),
       '@modules': path.resolve(APP_PATH, 'modules'),
       '@dolphin/config': path.resolve(ROOT_PATH, '.yo-rc.json'),
+      '@config': path.resolve(ROOT_PATH, 'config'),
       node_modules: path.resolve(ROOT_PATH, 'node_modules')
     },
     modules: [

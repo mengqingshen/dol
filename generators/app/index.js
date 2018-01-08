@@ -56,8 +56,7 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'appDesc',
-        message: '项目描述',
-        default: ''
+        message: '项目描述'
       },
       {
         type: 'input',
@@ -88,7 +87,6 @@ module.exports = class extends Generator {
         name: 'devServerHost',
         message: '开发环境的地址（比如: http://dev.example.com）',
         store: true,
-        default: ''
       },
       {
         type: 'input',
