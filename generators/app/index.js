@@ -51,7 +51,17 @@ module.exports = class extends Generator {
         type: 'input',
         name: 'appName',
         message: '项目名称（将作为项目文件夹名称）',
-        default: this.options.appName || this.destinationPath().split('/').pop()
+        default: ({ isUnderTheAppRootDir }) => (
+          isUnderTheAppRootDir === false
+            ? undefined
+            : (this.options.appName || this.destinationPath().split('/').pop())
+        ),
+        validate: (appName) => {
+          if (!appName) {
+            return '项目名称不可以为空！'
+          }
+          return true
+        }
       },
       {
         type: 'input',
@@ -112,9 +122,9 @@ module.exports = class extends Generator {
   }
 
   configuring() {
-    // 将新创建的项目目录作为脚手架项目的根目录（默认是执行 yo dolphin [appName] 是所在的目录）
-    if (!this.answers.isUnderTheAppRootDir) {
-      this.destinationRoot(this.options.appName)
+    // 将新创建的项目目录作为脚手架项目的根目录（默认是执行 yo dolphin [appName] 时所在的目录）
+    if (this.answers.isUnderTheAppRootDir !== true) {
+      this.destinationRoot(this.answers.appName)
     }
 
     // 在根目录生成 .yo-rc.json , 确保后续命令都能知道根目录
@@ -164,7 +174,7 @@ module.exports = class extends Generator {
     const copyDirAsTpl = (fullPathOfSource, fullPathOfDestination) => {
       fs.readdir(fullPathOfSource, (err, items) => {
         // 目录无法直接复制，创建之
-        this.spawnCommandSync('mkdir', [fullPathOfDestination])
+        shell.exec(`mkdir -p ${fullPathOfDestination}`)
 
         // 如果是空目录，就不向下递归了
         if (!items || !items[0]) {
@@ -195,8 +205,6 @@ module.exports = class extends Generator {
   }
 
   install() {
-    // this.spawnCommand('cd', [this.options.appName])
-    if (!this.answers.isUnderTheAppRootDir) shell.exec(`cd ${this.options.appName}`)
     this.npmInstall()
   }
 

@@ -118,6 +118,7 @@ module.exports = class extends Generator {
   writing() {
     this._copyFilesInPages()
     this._copyFilesInApis()
+    this._copyCommonModuleOfPage()
   }
 
   install() {}
@@ -134,47 +135,54 @@ module.exports = class extends Generator {
   }
 
   _copyFilesInPages() {
-    /**
-     * @description 将 template 下的所有文件都复制过去，并对文件进行 ejs render
-     * @param {*} fullPathOfSource 
-     * @param {*} fullPathOfDestination 
-     */
-    const copyDirAsTpl = (fullPathOfSource, fullPathOfDestination) => {
-      fs.readdir(fullPathOfSource, (err, items) => {
-        // 目录无法直接复制，创建之
-        this.spawnCommandSync('mkdir', [fullPathOfDestination])
-
-        // 如果是空目录，就不向下递归了
-        if (!items || !items[0]) {
-          return
-        }
-
-        items.forEach(((filePath) => {
-          const fullPathOfItemSource = path.join(fullPathOfSource, filePath)
-          const fullPathOfItemDestination = path.join(fullPathOfDestination, filePath)
-          fs.stat(fullPathOfItemSource, (error, stat) => {
-            if (stat.isFile()) {
-              // 假定 templates 下的每个文件都有可能用到了 ejs 语法，因此针对每个文件都使用 copyTpl 函数。
-              this.fs.copyTpl(fullPathOfItemSource, fullPathOfItemDestination, this.answers, this.tplSettings)
-            }
-
-            if (stat.isDirectory()) {
-              copyDirAsTpl(fullPathOfItemSource, fullPathOfItemDestination)
-            }
-          })
-        }))
-      })
-    }
-
     const SOURCE_ROOT = this.templatePath(`pages/${this.answers.pageDataFlowPlan}`)
     const DESTINATION_ROOT = this.destinationPath(`src/pages/${this.answers.pageName}`)
 
-    copyDirAsTpl(SOURCE_ROOT, DESTINATION_ROOT)
+    this._copyDirAsTpl(SOURCE_ROOT, DESTINATION_ROOT)
   }
 
   _copyFilesInApis() {
     const fullPathOfSource = this.templatePath('apis/page-name.js')
     const fullPathOfDestination = this.destinationPath(`src/apis/${this.answers.pageName}.js`)
     this.fs.copyTpl(fullPathOfSource, fullPathOfDestination, this.answers, this.tplSettings)
+  }
+
+  _copyCommonModuleOfPage() {
+    const SOURCE_ROOT = this.templatePath(`common/${this.answers.pageDataFlowPlan}`)
+    const DESTINATION_ROOT = this.destinationPath(`src/common/${this.answers.pageDataFlowPlan}`)
+
+    this._copyDirAsTpl(SOURCE_ROOT, DESTINATION_ROOT)
+  }
+
+  /**
+   * @description 将 template 下的所有文件都复制过去，并对文件进行 ejs render
+   * @param {*} fullPathOfSource 
+   * @param {*} fullPathOfDestination 
+   */
+  _copyDirAsTpl(fullPathOfSource, fullPathOfDestination) {
+    fs.readdir(fullPathOfSource, (err, items) => {
+      // 目录无法直接复制，创建之
+      this.spawnCommandSync('mkdir', [fullPathOfDestination])
+
+      // 如果是空目录，就不向下递归了
+      if (!items || !items[0]) {
+        return
+      }
+
+      items.forEach(((filePath) => {
+        const fullPathOfItemSource = path.join(fullPathOfSource, filePath)
+        const fullPathOfItemDestination = path.join(fullPathOfDestination, filePath)
+        fs.stat(fullPathOfItemSource, (error, stat) => {
+          if (stat.isFile()) {
+            // 假定 templates 下的每个文件都有可能用到了 ejs 语法，因此针对每个文件都使用 copyTpl 函数。
+            this.fs.copyTpl(fullPathOfItemSource, fullPathOfItemDestination, this.answers, this.tplSettings)
+          }
+
+          if (stat.isDirectory()) {
+            this._copyDirAsTpl(fullPathOfItemSource, fullPathOfItemDestination)
+          }
+        })
+      }))
+    })
   }
 }
