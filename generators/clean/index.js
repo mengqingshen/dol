@@ -142,7 +142,7 @@ module.exports = class extends Generator {
           path: {}
         }
       }
-      this.fs.writeJSON(PAGE_CONFIG_PATH, config)  k
+      this.fs.writeJSON(PAGE_CONFIG_PATH, config)
     }
   }
 

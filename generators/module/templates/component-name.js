@@ -10,6 +10,6 @@ import { observer } from 'mobx-react'
 @observer
 export default class extends React.Component {
   render() {
-    return <div >new component</div>
+    return <div>new component</div>
   }
 }

@@ -32,7 +32,7 @@ subDirs.forEach((name) => {
 const command = process.argv[2] || DEFAULT_COMMAND
 
 if (validCommands.has(command)) {
-  env.run(`dolphin:${validCommands.get(command)} ${process.argv.slice(3)}`, () => {})
+  env.run(`dolphin:${validCommands.get(command)} ${process.argv.slice(3).join(' ')}`, () => {})
 } else {
   console.error('无效的指令！')
   console.log(`

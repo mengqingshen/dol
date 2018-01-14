@@ -13,6 +13,6 @@ export default class extends React.Component {
   static propTypes = {}
 
   render() {
-    return <div></div>
+    return <div>new container</div>
   }
 }
