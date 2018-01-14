@@ -137,8 +137,6 @@ module.exports = class extends Generator {
         accessKeyId: this.answers.cdnAccessKeyId,
         secretAccessKey: this.answers.cdnSecretAccessKey
       },
-      title: {},
-      path: {},
       proxy: {
         api: (() => {
           if (/^https?\/\/.*/.test(this.answers.devServerHost)) {
@@ -209,7 +207,7 @@ module.exports = class extends Generator {
   }
 
   end() {
-    this.spawnCommand('npm', ['start'])
+    // this.spawnCommand('npm', ['start'])
     this.log(ENJOY)
   }
 }

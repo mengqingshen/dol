@@ -128,12 +128,21 @@ module.exports = class extends Generator {
 
   end() {
     if (this.answers.isCleaningPage && this.answers.moduleType === 'page') {
-      const config = this.config.getAll()
-      delete config.title[this.answers.pageName]
+      const PAGE_CONFIG_PATH = this.destinationPath('config/page.json')
+      let config
+      if (this.fs.exists(PAGE_CONFIG_PATH)) {
+        config = this.fs.readJSON(PAGE_CONFIG_PATH)
 
-      delete config.path[this.answers.pageName]
+        delete config.title[this.answers.pageName]
 
-      this.config.set(config)
+        delete config.path[this.answers.pageName]
+      } else {
+        config = {
+          title: {},
+          path: {}
+        }
+      }
+      this.fs.writeJSON(PAGE_CONFIG_PATH, config)  k
     }
   }
 

@@ -1,6 +1,6 @@
 /**
- * @author <$= appAuthorName $>, <$= appAuthorEmail $>
- * @file Store for request. <$= appCreateDate $>
+ * @author mengqingshen, mengqingshen_sean@outlook.com
+ * @file Store for request. <$= pageCreateDate $>
  */
 
 

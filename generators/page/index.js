@@ -124,13 +124,24 @@ module.exports = class extends Generator {
   install() {}
 
   end() {
-    const config = this.config.getAll()
+    // const config = this.config.getAll()
+    const PAGE_CONFIG_PATH = this.destinationPath('config/page.json')
+    let config
+    if (this.fs.exists(PAGE_CONFIG_PATH)) {
+      config = this.fs.readJSON(PAGE_CONFIG_PATH)
+    } else {
+      config = {
+        title: {},
+        path: {}
+      }
+    }
     config.title[this.answers.pageName] = this.answers.pageTitle
 
     config.path[this.answers.pageName] = this.answers.pagePath
 
-    this.config.set(config)
-
+    // this.config.set(config)
+    this.fs.writeJSON(PAGE_CONFIG_PATH, config)
+    this.spawnCommand('npm', ['start'])
     open(`http://127.0.0.1:3000${this.answers.pagePath}`)
   }
 

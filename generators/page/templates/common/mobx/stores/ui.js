@@ -1,5 +1,5 @@
 /**
- * @author <$= pageAuthorName $>, <$= pageAuthorEmail $>
+ * @author mengqingshen, mengqingshen_sean@outlook.com
  * @file store for global loading. <$= pageCreateDate $>
  */
 
