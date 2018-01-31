@@ -16,7 +16,7 @@ const webpackBaseConfig = require('./webpack.config.base.js')
 const ROOT_PATH = path.resolve(__dirname, '../')
 const BUILD_PATH = path.resolve(ROOT_PATH, 'public')
 
-const data = JSON.parse(fs.readFileSync(path.resolve(ROOT_PATH, '.yo-rc.json'), 'utf-8'))['generator-dolphin']
+const data = JSON.parse(fs.readFileSync(path.resolve(ROOT_PATH, '.yo-rc.json'), 'utf-8'))['dol']
 
 const config = {
   devtool: 'source-map',
